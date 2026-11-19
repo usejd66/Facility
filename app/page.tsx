@@ -1,5 +1,4 @@
-import QuoteForm from "@/components/QuoteForm";
-import { site, stats, services, steps, packages, testimonials, areas, faq } from "@/lib/data";
+import { site, steps, packages, testimonials, areas, faq } from "@/lib/data";
 
 const h2 = "text-3xl font-bold tracking-tight md:text-5xl";
 
@@ -37,29 +36,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="bg-ink text-foam">
-        <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-10 md:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.l}>
-              <dt className="text-4xl font-extrabold text-sun">{s.v}</dt>
-              <dd className="mt-1 text-sm text-foam/75">{s.l}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      {/* SHERBIMET */}
-      <section id="sherbimet" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-20">
-        <h2 className={h2}>Çfarë pastrojmë</h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {services.map((s) => (
-            <article key={s.t} className="rounded-2xl border border-ink/10 bg-white p-8 transition hover:border-aqua">
-              <div className="text-3xl" aria-hidden>{s.i}</div>
-              <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
-              <p className="mt-2 text-ink/70">{s.d}</p>
-            </article>
-          ))}
+      {/* ABOUT */}
+      <section id="about" className="scroll-mt-20 bg-white px-6 py-24 text-center md:py-28">
+        <div className="mx-auto max-w-5xl">
+          <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-ink/10 px-4 py-2 text-xs font-semibold tracking-wide text-ink/75">
+            <span className="h-2 w-2 rounded-full bg-aqua" aria-hidden />
+            ABOUT US
+          </p>
+          <h2 className="mx-auto mt-6 max-w-4xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl md:leading-[1.16]">
+            At Rambo, we combine professional cleaning with reliable, high-quality solutions{" "}
+            <span className="font-normal text-ink/45">
+              that transform everyday spaces into fresh, comfortable places with ease.
+            </span>
+          </h2>
+          <a
+            href="#procesi"
+            className="mx-auto mt-9 inline-flex items-center gap-3 rounded-full border border-ink/10 py-1 pl-5 pr-1 text-sm font-medium transition hover:border-aqua/40"
+          >
+            More About Us
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-aqua text-lg text-white" aria-hidden>
+              ↗
+            </span>
+          </a>
         </div>
       </section>
 

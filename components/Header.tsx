@@ -1,10 +1,11 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import { site } from "@/lib/data";
 
 const links = [
   ["Home", "#"],
-  ["Services", "#sherbimet"],
+  ["About Us", "#about"],
   ["How It Works", "#procesi"],
   ["Pricing", "#cmimet"],
   ["Reviews", "#vleresime"],
@@ -15,9 +16,15 @@ export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-40 text-white">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6">
-        <a href="#" className="text-2xl font-extrabold tracking-tight">
-          <span className="mr-2 inline-block h-2 w-2 rounded-full bg-[#9ad86a] align-middle"></span>
-          CLEANFY
+        <a href="#" aria-label="Rambo Facility Management" className="shrink-0">
+          <Image
+            src="/rambo-logo.png"
+            alt="Rambo Facility Management"
+            width={1999}
+            height={533}
+            priority
+            className="h-10 w-auto md:h-12"
+          />
         </a>
         <nav className="hidden items-center gap-9 text-sm font-semibold md:flex">
           {links.map(([l, h]) => (
