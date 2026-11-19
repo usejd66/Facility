@@ -27,9 +27,19 @@ export const messages = {
     hero: {
       eyebrow: "Pastrim profesional",
       title: "Hapësira të pastra. Mendje e qetë.",
-      description: "Pastrim i besueshëm për shtëpi, zyra dhe ambiente biznesi — me kujdes për çdo detaj dhe një ekip që mund të mbështeteni.",
+      description: "Pastrim i besueshëm për shtëpi, zyra dhe ambiente biznesi, me kujdes për çdo detaj.",
       cta: "Kërko ofertë falas",
+      secondary: "Shiko shërbimet",
+      badges: ["Produkte të përfshira", "Çdo ditë 08:00–20:00", "Ofertë pa detyrim"],
+      scroll: "Lëviz poshtë",
     },
+    highlights: [
+      { value: "24–48", suffix: "h", label: "zakonisht vijmë brenda" },
+      { value: "7", suffix: "/7", label: "ditë në javë në shërbim" },
+      { value: "100", suffix: "%", label: "produkte dhe pajisje të përfshira" },
+      { value: "4", suffix: "", label: "lloje pastrimi për çdo nevojë" },
+    ],
+    brands: { title: "Punojmë me produkte dhe pajisje profesionale nga markat më të njohura" },
     about: {
       eyebrow: "Rreth nesh",
       title: "Te Rambo bashkojmë pastrimin profesional me zgjidhje të besueshme e cilësore",
@@ -37,17 +47,20 @@ export const messages = {
       link: "Më shumë rreth nesh",
     },
     services: {
+      eyebrow: "Shërbimet",
       title: "Shërbimet tona",
       description: "Zgjidhje pastrimi të përshtatura për hapësirën dhe nevojat tuaja.",
       items: [
-        { title: "Shtëpi dhe apartamente", description: "Pastrim i rregullt ose një herë, me produktet dhe pajisjet tona.", icon: "⌂" },
-        { title: "Zyra dhe biznese", description: "Pastrim fleksibël për ambiente pune, sipas orarit tuaj.", icon: "▦" },
-        { title: "Pas ndërtimit", description: "Përgatitim ambientin pas punimeve, duke u kujdesur për pluhurin dhe sipërfaqet.", icon: "✳" },
-        { title: "Pastrim i thellë", description: "Kujdes i shtuar për kuzhina, banjo, dritare dhe sipërfaqe të vështira.", icon: "✦" },
+        { title: "Shtëpi dhe apartamente", description: "Pastrim i rregullt ose një herë, me produktet dhe pajisjet tona.", icon: "home" },
+        { title: "Zyra dhe biznese", description: "Pastrim fleksibël për ambiente pune, sipas orarit tuaj.", icon: "office" },
+        { title: "Pas ndërtimit", description: "Përgatitim ambientin pas punimeve, duke u kujdesur për pluhurin dhe sipërfaqet.", icon: "construction" },
+        { title: "Pastrim i thellë", description: "Kujdes i shtuar për kuzhina, banjo, dritare dhe sipërfaqe të vështira.", icon: "deep" },
       ],
     },
     process: {
+      eyebrow: "Procesi",
       title: "Si punojmë",
+      description: "Katër hapa të thjeshtë, nga mesazhi i parë deri te hapësira e pastër.",
       steps: [
         { title: "Na kontaktoni", description: "Na tregoni llojin e ambientit dhe shërbimin që ju nevojitet." },
         { title: "Merrni ofertën", description: "Përgatisim një ofertë të qartë sipas kërkesave tuaja." },
@@ -56,6 +69,8 @@ export const messages = {
       ],
     },
     pricing: {
+      eyebrow: "Çmimet",
+      popular: "Më e zgjedhura",
       title: "Paketa dhe çmime",
       description: "Çmime orientuese për apartament 1+1. Oferta përfundimtare varet nga metrazhi dhe nevojat e ambientit.",
       from: "nga",
@@ -68,11 +83,13 @@ export const messages = {
       ],
     },
     areas: {
+      eyebrow: "Tiranë dhe rrethina",
       title: "Zonat ku punojmë",
       note: "Nuk e shihni zonën tuaj? Na kontaktoni — mund të organizojmë një vizitë.",
       names: ["Blloku", "Kombinat", "Ish-Parku", "Don Bosko", "Kashar", "Yzberisht", "Laprakë", "Sauk", "Farkë", "Vorë"],
     },
     faq: {
+      eyebrow: "FAQ",
       title: "Pyetje të shpeshta",
       items: [
         ["Sa shpejt mund të vini?", "Zakonisht mund të organizojmë një vizitë brenda 24–48 orëve. Për raste urgjente, na shkruani në WhatsApp."],
@@ -83,6 +100,7 @@ export const messages = {
     },
     quote: {
       title: "Kërko ofertë falas",
+      eyebrow: "Ofertë falas",
       description: "Na tregoni pak për ambientin tuaj dhe ju kontaktojmë për ofertën.",
       name: "Emri",
       service: "Shërbimi",
@@ -105,6 +123,9 @@ export const messages = {
       hours: "Çdo ditë 08:00–20:00",
       rights: "Të gjitha të drejtat e rezervuara.",
       cta: "Keni nevojë për një hapësirë më të pastër?",
+      ctaButton: "Na shkruani sot",
+      contact: "Kontakt",
+      navigate: "Navigimi",
     },
     whatsapp: {
       label: "Na shkruani në WhatsApp",
@@ -132,9 +153,19 @@ export const messages = {
     hero: {
       eyebrow: "Professional cleaning",
       title: "A cleaner space. A clearer mind.",
-      description: "Reliable cleaning for homes, offices, and business spaces — with attention to every detail and a team you can count on.",
+      description: "Reliable cleaning for homes, offices and business spaces, with attention to every detail.",
       cta: "Get a Free Quote",
+      secondary: "Explore services",
+      badges: ["Products included", "Daily 08:00–20:00", "No-obligation quote"],
+      scroll: "Scroll",
     },
+    highlights: [
+      { value: "24–48", suffix: "h", label: "typical time to your door" },
+      { value: "7", suffix: "/7", label: "days a week at your service" },
+      { value: "100", suffix: "%", label: "products and equipment included" },
+      { value: "4", suffix: "", label: "cleaning types for every need" },
+    ],
+    brands: { title: "We work with professional products and equipment from trusted brands" },
     about: {
       eyebrow: "About us",
       title: "At Rambo, we combine professional cleaning with reliable, high-quality solutions",
@@ -142,17 +173,20 @@ export const messages = {
       link: "More About Us",
     },
     services: {
+      eyebrow: "Services",
       title: "Our Services",
       description: "Cleaning solutions tailored to your space and needs.",
       items: [
-        { title: "Homes and apartments", description: "Regular or one-time cleaning, with our own products and equipment.", icon: "⌂" },
-        { title: "Offices and businesses", description: "Flexible cleaning for workplaces, scheduled around your hours.", icon: "▦" },
-        { title: "Post-construction", description: "We prepare your space after renovation, taking care with dust and surfaces.", icon: "✳" },
-        { title: "Deep cleaning", description: "Extra attention for kitchens, bathrooms, windows, and hard-to-clean surfaces.", icon: "✦" },
+        { title: "Homes and apartments", description: "Regular or one-time cleaning, with our own products and equipment.", icon: "home" },
+        { title: "Offices and businesses", description: "Flexible cleaning for workplaces, scheduled around your hours.", icon: "office" },
+        { title: "Post-construction", description: "We prepare your space after renovation, taking care with dust and surfaces.", icon: "construction" },
+        { title: "Deep cleaning", description: "Extra attention for kitchens, bathrooms, windows, and hard-to-clean surfaces.", icon: "deep" },
       ],
     },
     process: {
+      eyebrow: "Process",
       title: "How It Works",
+      description: "Four simple steps, from your first message to a spotless space.",
       steps: [
         { title: "Get in touch", description: "Tell us about your space and the service you need." },
         { title: "Get a quote", description: "We prepare a clear quote based on your requirements." },
@@ -161,6 +195,8 @@ export const messages = {
       ],
     },
     pricing: {
+      eyebrow: "Pricing",
+      popular: "Most popular",
       title: "Packages and Pricing",
       description: "Guide prices for a one-bedroom apartment. Your final quote depends on the size and needs of your space.",
       from: "from",
@@ -173,11 +209,13 @@ export const messages = {
       ],
     },
     areas: {
+      eyebrow: "Tirana and surroundings",
       title: "Areas We Serve",
       note: "Don’t see your area? Get in touch — we may be able to arrange a visit.",
       names: ["Blloku", "Kombinat", "Ish-Parku", "Don Bosko", "Kashar", "Yzberisht", "Laprakë", "Sauk", "Farkë", "Vorë"],
     },
     faq: {
+      eyebrow: "FAQ",
       title: "Frequently Asked Questions",
       items: [
         ["How soon can you come?", "We can usually arrange a visit within 24–48 hours. For urgent requests, message us on WhatsApp."],
@@ -188,6 +226,7 @@ export const messages = {
     },
     quote: {
       title: "Request a Free Quote",
+      eyebrow: "Free quote",
       description: "Tell us a little about your space and we’ll get back to you with a quote.",
       name: "Name",
       service: "Service",
@@ -210,6 +249,9 @@ export const messages = {
       hours: "Daily, 08:00–20:00",
       rights: "All rights reserved.",
       cta: "Ready for a cleaner space?",
+      ctaButton: "Message us today",
+      contact: "Contact",
+      navigate: "Navigate",
     },
     whatsapp: {
       label: "Message us on WhatsApp",
@@ -217,3 +259,5 @@ export const messages = {
     },
   },
 } as const;
+
+export type Messages = (typeof messages)[Locale];

@@ -1,15 +1,18 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Bricolage_Grotesque } from "next/font/google";
 import Header from "@/components/Header";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { isLocale, locales, messages } from "@/lib/i18n";
+import SmoothScroll from "@/components/SmoothScroll";
+import { isLocale, locales } from "@/lib/i18n";
 import { site } from "@/lib/data";
 import "../globals.css";
 
 const bricolage = Bricolage_Grotesque({ subsets: ["latin", "latin-ext"], variable: "--font-bricolage" });
 
 export const dynamicParams = false;
+
+export const viewport: Viewport = { themeColor: "#08131f" };
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -46,12 +49,14 @@ export default async function LocaleLayout({
   const locale = localeParam;
 
   return (
-    <html lang={locale}>
-      <body className={`${bricolage.variable} font-sans antialiased`}>
+    <html lang={locale} className={bricolage.variable}>
+      <body className="font-sans antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <Header locale={locale} />
-        {children}
-        <WhatsAppButton locale={locale} />
+        <SmoothScroll>
+          <Header locale={locale} />
+          {children}
+          <WhatsAppButton locale={locale} />
+        </SmoothScroll>
       </body>
     </html>
   );
