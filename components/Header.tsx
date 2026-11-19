@@ -2,10 +2,12 @@
 import Image from "next/image";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { ArrowUpRight, Menu, Phone, X } from "lucide-react";
 import { site } from "@/lib/data";
 import { messages, type Locale } from "@/lib/i18n";
+import { external, whatsappQuoteUrl } from "@/lib/whatsapp";
 
 export default function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
@@ -20,15 +22,19 @@ export default function Header({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const pathname = usePathname() ?? `/${locale}`;
+  const home = `/${locale}`;
+  // On the home page keep plain "#id" anchors (smooth scroll); elsewhere link back to the home page sections.
+  const base = pathname === home ? "" : home;
   const t = messages[locale].nav;
   const links = [
-    [t.about, "#about"],
-    [t.services, "#sherbimet"],
-    [t.process, "#procesi"],
-    [t.pricing, "#cmimet"],
-    [t.faq, "#faq"],
+    [t.about, `${base}#about`],
+    [t.services, `${base}#sherbimet`],
+    [t.faq, `${base}#faq`],
+    [t.contact, `${home}/kontakt`],
   ] as const;
   const otherLocale = locale === "sq" ? "en" : "sq";
+  const otherPath = pathname.replace(new RegExp(`^/${locale}(?=/|$)`), `/${otherLocale}`);
 
   return (
     <>
@@ -39,7 +45,7 @@ export default function Header({ locale }: { locale: Locale }) {
             scrolled || open ? "border border-ink/[0.06] bg-white/85 shadow-[0_8px_30px_rgba(8,19,31,0.08)] backdrop-blur-xl" : "border border-transparent",
           )}
         >
-          <a href="#" aria-label="Rambo Facility Management" className="shrink-0">
+          <a href={home} aria-label="Rambo Facility Management" className="shrink-0">
             <Image src="/rambo-logo-dark.png" alt="Rambo Facility Management" width={1999} height={533} priority className="h-8 w-auto md:h-9" />
           </a>
 
@@ -57,10 +63,10 @@ export default function Header({ locale }: { locale: Locale }) {
               <Phone size={16} className="text-gold" aria-hidden /> {site.phoneDisplay}
             </a>
             <span className="h-5 w-px bg-ink/15" aria-hidden />
-            <a href={`/${otherLocale}`} lang={otherLocale} aria-label={t.language} className="text-sm font-semibold text-ink/70 transition-colors hover:text-ink">
+            <a href={otherPath} lang={otherLocale} aria-label={t.language} className="text-sm font-semibold text-ink/70 transition-colors hover:text-ink">
               {otherLocale.toUpperCase()}
             </a>
-            <a href="#oferta" className="group flex items-center gap-2 rounded-full bg-ink py-2.5 pl-5 pr-4 text-sm font-semibold text-cream transition-colors hover:bg-navy-soft">
+            <a href={whatsappQuoteUrl(locale)} {...external} className="group flex items-center gap-2 rounded-full bg-ink py-2.5 pl-5 pr-4 text-sm font-semibold text-cream transition-colors hover:bg-navy-soft">
               {t.book}
               <ArrowUpRight size={16} className="text-gold-light transition-transform duration-300 group-hover:rotate-45" />
             </a>
@@ -108,11 +114,11 @@ export default function Header({ locale }: { locale: Locale }) {
                 <a href={`tel:+${site.phone}`} className="flex items-center gap-2 font-semibold">
                   <Phone size={18} className="text-gold" aria-hidden /> {site.phoneDisplay}
                 </a>
-                <a href={`/${otherLocale}`} lang={otherLocale} aria-label={t.language} className="rounded-full border border-ink/20 px-4 py-2 text-sm font-bold">
+                <a href={otherPath} lang={otherLocale} aria-label={t.language} className="rounded-full border border-ink/20 px-4 py-2 text-sm font-bold">
                   {otherLocale.toUpperCase()}
                 </a>
               </div>
-              <a href="#oferta" onClick={() => setOpen(false)} className="rounded-full bg-ink px-6 py-4 text-center font-semibold text-cream">
+              <a href={whatsappQuoteUrl(locale)} {...external} onClick={() => setOpen(false)} className="rounded-full bg-ink px-6 py-4 text-center font-semibold text-cream">
                 {t.book}
               </a>
             </div>

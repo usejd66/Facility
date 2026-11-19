@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Bricolage_Grotesque } from "next/font/google";
 import Header from "@/components/Header";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import { isLocale, locales } from "@/lib/i18n";
 import { site } from "@/lib/data";
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
         <SmoothScroll>
           <Header locale={locale} />
           {children}
+          <Footer locale={locale} />
           <WhatsAppButton locale={locale} />
         </SmoothScroll>
       </body>
