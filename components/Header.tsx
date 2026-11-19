@@ -2,17 +2,22 @@
 import Image from "next/image";
 import { useState } from "react";
 import { site } from "@/lib/data";
+import { messages, type Locale } from "@/lib/i18n";
 
-const links = [
-  ["Home", "#"],
-  ["About Us", "#about"],
-  ["How It Works", "#procesi"],
-  ["Pricing", "#cmimet"],
-  ["Reviews", "#vleresime"],
+const links = (locale: Locale) => [
+  [messages[locale].nav.about, "#about"],
+  [messages[locale].nav.services, "#sherbimet"],
+  [messages[locale].nav.process, "#procesi"],
+  [messages[locale].nav.pricing, "#cmimet"],
+  [messages[locale].nav.faq, "#faq"],
 ];
 
-export default function Header() {
+export default function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const t = messages[locale].nav;
+  const otherLocale = locale === "sq" ? "en" : "sq";
+  const languageLabel = locale === "sq" ? "EN" : "SQ";
+
   return (
     <header className="absolute inset-x-0 top-0 z-40 text-white">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6">
@@ -26,30 +31,41 @@ export default function Header() {
             className="h-10 w-auto md:h-12"
           />
         </a>
-        <nav className="hidden items-center gap-9 text-sm font-semibold md:flex">
-          {links.map(([l, h]) => (
-            <a key={h} href={h} className="transition hover:text-[#b9d6af]">{l}</a>
+        <nav className="hidden items-center gap-6 text-sm font-semibold lg:flex">
+          {links(locale).map(([label, href]) => (
+            <a key={href} href={href} className="transition hover:text-[#b9d6af]">{label}</a>
           ))}
-          <a href={`tel:+${site.phone}`} className="ml-8">{site.phoneDisplay}</a>
-          <a href="#oferta" className="border border-white/70 px-6 py-4 font-bold transition hover:bg-white hover:text-ink">
-            Book a Cleaning
+          <a href={`tel:+${site.phone}`} className="ml-2 whitespace-nowrap">{site.phoneDisplay}</a>
+          <a href={`/${otherLocale}`} lang={otherLocale} aria-label={t.language} className="rounded-full border border-white/40 px-3 py-2 text-xs font-bold tracking-wide transition hover:bg-white/10">
+            {languageLabel}
+          </a>
+          <a href="#oferta" className="whitespace-nowrap border border-white/70 px-5 py-3 font-bold transition hover:bg-white hover:text-ink">
+            {t.book}
           </a>
         </nav>
         <button
-          aria-label="Hap menunë"
+          aria-label={open ? t.close : t.menu}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
-          className="rounded-lg border border-ink/20 px-3 py-2 md:hidden"
+          className="rounded-lg border border-white/50 px-3 py-2 lg:hidden"
         >
-          {open ? "Mbyll" : "Menu"}
+          {open ? t.close : "☰"}
         </button>
       </div>
       {open && (
-        <nav className="grid gap-1 border-t border-white/15 bg-[#0e2136]/95 px-6 pb-4 md:hidden">
-          {links.map(([l, h]) => (
-            <a key={h} href={h} onClick={() => setOpen(false)} className="py-3 font-medium">{l}</a>
+        <nav className="grid gap-1 border-t border-white/15 bg-[#0e2136]/95 px-6 pb-4 lg:hidden">
+          {links(locale).map(([label, href]) => (
+            <a key={href} href={href} onClick={() => setOpen(false)} className="py-3 font-medium">{label}</a>
           ))}
-          <a href={`tel:+${site.phone}`} className="mt-2 rounded-full bg-sun px-4 py-3 text-center font-bold">Telefono: {site.phoneDisplay}</a>
+          <div className="mt-2 flex items-center justify-between gap-4">
+            <a href={`tel:+${site.phone}`} className="py-3 font-bold">{t.phone}: {site.phoneDisplay}</a>
+            <a href={`/${otherLocale}`} lang={otherLocale} aria-label={t.language} className="rounded-full border border-white/40 px-4 py-2 text-sm font-bold">
+              {languageLabel}
+            </a>
+          </div>
+          <a href="#oferta" onClick={() => setOpen(false)} className="mt-2 rounded-full bg-sun px-4 py-3 text-center font-bold text-ink">
+            {t.book}
+          </a>
         </nav>
       )}
     </header>

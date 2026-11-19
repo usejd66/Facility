@@ -1,0 +1,219 @@
+export const locales = ["sq", "en"] as const;
+export type Locale = (typeof locales)[number];
+
+export function isLocale(value: string): value is Locale {
+  return locales.includes(value as Locale);
+}
+
+export const messages = {
+  sq: {
+    metadata: {
+      title: "Rambo.al | Pastrim profesional në Tiranë",
+      description: "Pastrim profesional për shtëpi, zyra dhe ambiente biznesi në Tiranë. Kërko ofertë falas.",
+      ogLocale: "sq_AL",
+    },
+    nav: {
+      about: "Rreth nesh",
+      services: "Shërbimet",
+      process: "Si punojmë",
+      pricing: "Çmimet",
+      faq: "Pyetje",
+      book: "Rezervo pastrimin",
+      menu: "Hap menunë",
+      close: "Mbyll menunë",
+      language: "Ndrysho gjuhën në anglisht",
+      phone: "Telefono",
+    },
+    hero: {
+      eyebrow: "Pastrim profesional",
+      title: "Hapësira të pastra. Mendje e qetë.",
+      description: "Pastrim i besueshëm për shtëpi, zyra dhe ambiente biznesi — me kujdes për çdo detaj dhe një ekip që mund të mbështeteni.",
+      cta: "Kërko ofertë falas",
+    },
+    about: {
+      eyebrow: "Rreth nesh",
+      title: "Te Rambo bashkojmë pastrimin profesional me zgjidhje të besueshme e cilësore",
+      continuation: "që i kthejnë hapësirat e përditshme në ambiente të freskëta e të rehatshme.",
+      link: "Më shumë rreth nesh",
+    },
+    services: {
+      title: "Shërbimet tona",
+      description: "Zgjidhje pastrimi të përshtatura për hapësirën dhe nevojat tuaja.",
+      items: [
+        { title: "Shtëpi dhe apartamente", description: "Pastrim i rregullt ose një herë, me produktet dhe pajisjet tona.", icon: "⌂" },
+        { title: "Zyra dhe biznese", description: "Pastrim fleksibël për ambiente pune, sipas orarit tuaj.", icon: "▦" },
+        { title: "Pas ndërtimit", description: "Përgatitim ambientin pas punimeve, duke u kujdesur për pluhurin dhe sipërfaqet.", icon: "✳" },
+        { title: "Pastrim i thellë", description: "Kujdes i shtuar për kuzhina, banjo, dritare dhe sipërfaqe të vështira.", icon: "✦" },
+      ],
+    },
+    process: {
+      title: "Si punojmë",
+      steps: [
+        { title: "Na kontaktoni", description: "Na tregoni llojin e ambientit dhe shërbimin që ju nevojitet." },
+        { title: "Merrni ofertën", description: "Përgatisim një ofertë të qartë sipas kërkesave tuaja." },
+        { title: "Caktojmë orarin", description: "Zgjedhim së bashku një orar të përshtatshëm për ju." },
+        { title: "Pastrojmë me kujdes", description: "Ekipi ynë kujdeset për hapësirën dhe detajet e saj." },
+      ],
+    },
+    pricing: {
+      title: "Paketa dhe çmime",
+      description: "Çmime orientuese për apartament 1+1. Oferta përfundimtare varet nga metrazhi dhe nevojat e ambientit.",
+      from: "nga",
+      custom: "me ofertë",
+      request: "Kërko ofertë",
+      packages: [
+        { name: "Standard", price: "2,500 L", features: ["Dysheme, pluhur dhe banjo", "Kuzhina nga jashtë", "Produkte të përfshira"] },
+        { name: "I plotë", price: "4,000 L", features: ["Gjithçka në paketën Standard", "Brenda furrës dhe frigoriferit", "Dritare të brendshme", "Ndërrim çarçafësh"] },
+        { name: "Biznes", price: "custom", features: ["Kontratë mujore", "Orar sipas nevojës", "Faturim për biznese", "Ekip i dedikuar"] },
+      ],
+    },
+    areas: {
+      title: "Zonat ku punojmë",
+      note: "Nuk e shihni zonën tuaj? Na kontaktoni — mund të organizojmë një vizitë.",
+      names: ["Blloku", "Kombinat", "Ish-Parku", "Don Bosko", "Kashar", "Yzberisht", "Laprakë", "Sauk", "Farkë", "Vorë"],
+    },
+    faq: {
+      title: "Pyetje të shpeshta",
+      items: [
+        ["Sa shpejt mund të vini?", "Zakonisht mund të organizojmë një vizitë brenda 24–48 orëve. Për raste urgjente, na shkruani në WhatsApp."],
+        ["A i sillni ju produktet?", "Po, produktet dhe pajisjet e pastrimit përfshihen në ofertën tonë."],
+        ["Si mund të paguaj?", "Mund të paguani cash pas shërbimit ose me transfertë bankare për bizneset."],
+        ["A duhet të jem në shtëpi gjatë pastrimit?", "Jo domosdoshmërisht. Detajet mund t’i dakordësojmë paraprakisht."],
+      ],
+    },
+    quote: {
+      title: "Kërko ofertë falas",
+      description: "Na tregoni pak për ambientin tuaj dhe ju kontaktojmë për ofertën.",
+      name: "Emri",
+      service: "Shërbimi",
+      services: ["Pastrim shtëpie", "Pastrim zyre", "Pastrim pas ndërtimit", "Pastrim i thellë"],
+      area: "Zona",
+      areaPlaceholder: "p.sh. Blloku",
+      size: "Metrazhi (m²)",
+      details: "Detaje shtesë",
+      detailsPlaceholder: "Data ose kërkesa të veçanta",
+      send: "Vazhdo në WhatsApp",
+      response: "Duke dërguar formularin, hapet WhatsApp me kërkesën tuaj gati për t’u dërguar.",
+      greeting: (name: string) => `Përshëndetje, jam ${name}.`,
+      serviceLine: "Shërbimi",
+      areaLine: "Zona",
+      sizeLine: "Metrazhi",
+      detailsLine: "Detaje",
+    },
+    footer: {
+      description: "Shërbime pastrimi profesionale në Tiranë dhe zonat përreth.",
+      hours: "Çdo ditë 08:00–20:00",
+      rights: "Të gjitha të drejtat e rezervuara.",
+      cta: "Keni nevojë për një hapësirë më të pastër?",
+    },
+    whatsapp: {
+      label: "Na shkruani në WhatsApp",
+      message: "Përshëndetje, dua të marr një ofertë për pastrim.",
+    },
+  },
+  en: {
+    metadata: {
+      title: "Rambo.al | Professional Cleaning in Tirana",
+      description: "Professional cleaning for homes, offices, and business spaces in Tirana. Request a free quote.",
+      ogLocale: "en_US",
+    },
+    nav: {
+      about: "About Us",
+      services: "Services",
+      process: "How It Works",
+      pricing: "Pricing",
+      faq: "FAQ",
+      book: "Book a Cleaning",
+      menu: "Open menu",
+      close: "Close menu",
+      language: "Switch language to Albanian",
+      phone: "Call",
+    },
+    hero: {
+      eyebrow: "Professional cleaning",
+      title: "A cleaner space. A clearer mind.",
+      description: "Reliable cleaning for homes, offices, and business spaces — with attention to every detail and a team you can count on.",
+      cta: "Get a Free Quote",
+    },
+    about: {
+      eyebrow: "About us",
+      title: "At Rambo, we combine professional cleaning with reliable, high-quality solutions",
+      continuation: "that turn everyday spaces into fresh, comfortable places.",
+      link: "More About Us",
+    },
+    services: {
+      title: "Our Services",
+      description: "Cleaning solutions tailored to your space and needs.",
+      items: [
+        { title: "Homes and apartments", description: "Regular or one-time cleaning, with our own products and equipment.", icon: "⌂" },
+        { title: "Offices and businesses", description: "Flexible cleaning for workplaces, scheduled around your hours.", icon: "▦" },
+        { title: "Post-construction", description: "We prepare your space after renovation, taking care with dust and surfaces.", icon: "✳" },
+        { title: "Deep cleaning", description: "Extra attention for kitchens, bathrooms, windows, and hard-to-clean surfaces.", icon: "✦" },
+      ],
+    },
+    process: {
+      title: "How It Works",
+      steps: [
+        { title: "Get in touch", description: "Tell us about your space and the service you need." },
+        { title: "Get a quote", description: "We prepare a clear quote based on your requirements." },
+        { title: "Choose a time", description: "We agree on a schedule that works for you." },
+        { title: "We clean with care", description: "Our team looks after your space and every detail." },
+      ],
+    },
+    pricing: {
+      title: "Packages and Pricing",
+      description: "Guide prices for a one-bedroom apartment. Your final quote depends on the size and needs of your space.",
+      from: "from",
+      custom: "custom quote",
+      request: "Request a Quote",
+      packages: [
+        { name: "Standard", price: "2,500 ALL", features: ["Floors, dusting, and bathroom", "Exterior kitchen surfaces", "Cleaning products included"] },
+        { name: "Complete", price: "4,000 ALL", features: ["Everything in Standard", "Inside oven and refrigerator", "Interior windows", "Bed linen change"] },
+        { name: "Business", price: "custom", features: ["Monthly agreement", "Schedule to suit your needs", "Business invoicing", "Dedicated team"] },
+      ],
+    },
+    areas: {
+      title: "Areas We Serve",
+      note: "Don’t see your area? Get in touch — we may be able to arrange a visit.",
+      names: ["Blloku", "Kombinat", "Ish-Parku", "Don Bosko", "Kashar", "Yzberisht", "Laprakë", "Sauk", "Farkë", "Vorë"],
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      items: [
+        ["How soon can you come?", "We can usually arrange a visit within 24–48 hours. For urgent requests, message us on WhatsApp."],
+        ["Do you bring the cleaning products?", "Yes, cleaning products and equipment are included in our quote."],
+        ["How can I pay?", "You can pay in cash after the service or by bank transfer for business bookings."],
+        ["Do I need to be home during the cleaning?", "Not necessarily. We can agree on the details in advance."],
+      ],
+    },
+    quote: {
+      title: "Request a Free Quote",
+      description: "Tell us a little about your space and we’ll get back to you with a quote.",
+      name: "Name",
+      service: "Service",
+      services: ["Home cleaning", "Office cleaning", "Post-construction cleaning", "Deep cleaning"],
+      area: "Area",
+      areaPlaceholder: "e.g. Blloku",
+      size: "Space size (m²)",
+      details: "Additional details",
+      detailsPlaceholder: "Date or special requests",
+      send: "Continue to WhatsApp",
+      response: "Submitting opens WhatsApp with your request ready to send.",
+      greeting: (name: string) => `Hello, my name is ${name}.`,
+      serviceLine: "Service",
+      areaLine: "Area",
+      sizeLine: "Space size",
+      detailsLine: "Details",
+    },
+    footer: {
+      description: "Professional cleaning services in Tirana and nearby areas.",
+      hours: "Daily, 08:00–20:00",
+      rights: "All rights reserved.",
+      cta: "Ready for a cleaner space?",
+    },
+    whatsapp: {
+      label: "Message us on WhatsApp",
+      message: "Hello, I’d like to request a cleaning quote.",
+    },
+  },
+} as const;
