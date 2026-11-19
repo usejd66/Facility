@@ -7,25 +7,34 @@ export default function Home() {
   return (
     <main>
       {/* HERO */}
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-16 pt-12 md:grid-cols-[1.3fr_1fr] md:pt-20">
-        <div>
-          <h1 className="text-5xl font-extrabold leading-[1.02] tracking-tight md:text-7xl">
-            Pastërtia që nuk kërkon që ti ta kontrollosh.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-ink/75">
-            Pastrim profesional për shtëpi, zyra dhe ambiente pas ndërtimit në {site.city}. Çmim i qartë përpara se të fillojmë, produkte të përfshira.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#oferta" className="rounded-full bg-ink px-7 py-4 font-semibold text-white hover:bg-aqua">Merr ofertë falas</a>
-            <a href={`tel:+${site.phone}`} className="rounded-full border-2 border-ink px-7 py-4 font-semibold hover:bg-ink hover:text-white">Telefono tani</a>
+      <section className="relative isolate flex min-h-[760px] items-end overflow-hidden text-white md:min-h-[720px]">
+        <img
+          src="/cleaning-hero.jpg"
+          alt="Profesionale duke pastruar një shtëpi moderne"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[58%_center]"
+        />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(14,33,54,.92)_0%,rgba(14,33,54,.72)_38%,rgba(14,33,54,.08)_72%,rgba(14,33,54,.18)_100%),linear-gradient(0deg,rgba(14,33,54,.24),transparent_45%)]"></div>
+        <div className="mx-auto w-full max-w-[1280px] px-6 pb-20 md:pb-16">
+          <div className="max-w-[650px]">
+            <p className="mb-6 text-xs font-bold uppercase tracking-[0.12em]">Home Cleaning</p>
+            <h1 className="max-w-[620px] text-[52px] font-bold leading-[1.02] tracking-[-0.045em] md:text-[72px]">
+              Make Your Space Feel Fresh and New Again
+            </h1>
+            <p className="mt-7 max-w-[590px] text-base leading-7 text-white/90 md:text-lg">
+              Reliable cleaning for homes, offices, and commercial spaces — handled by professional teams who show up, follow the details, and leave things properly clean.
+            </p>
+            <a
+              href="#oferta"
+              className="mt-8 inline-flex bg-white px-8 py-4 text-sm font-bold text-ink transition hover:bg-[#dcebd7]"
+            >
+              Get a Free Quote
+            </a>
+            <p className="mt-16 text-sm font-medium">
+              <span className="mr-2 text-[#ffb703] tracking-[0.12em]">★★★★★</span>
+              <strong>4.9</strong> from 500+ customers
+            </p>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-ink/80">
-            <li>✓ Produkte të përfshira</li>
-            <li>✓ Rregullim pa pagesë nëse nuk kënaqeni</li>
-            <li>✓ {site.hours}</li>
-          </ul>
         </div>
-        <div id="oferta" className="scroll-mt-24"><QuoteForm /></div>
       </section>
 
       {/* STATS */}
@@ -137,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="bg-aqua py-16 text-ink">
+      <section id="oferta" className="scroll-mt-20 bg-aqua py-16 text-ink">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-6">
           <h2 className="max-w-xl text-3xl font-bold md:text-4xl">Gati për një shtëpi ose zyrë që shkëlqen?</h2>
           <a href="#oferta" className="rounded-full bg-ink px-8 py-4 font-semibold text-white hover:bg-white hover:text-ink">Merr ofertë falas</a>
