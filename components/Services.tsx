@@ -47,7 +47,7 @@ export default function Services({ locale }: { locale: Locale }) {
                         src={photo.src}
                         alt={photo.alt[locale]}
                         fill
-                        sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw"
+                        sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 80vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>

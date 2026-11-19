@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { m, useMotionValue, useSpring } from "motion/react";
 
 /** Wraps a button/link so it gently follows the pointer on hover (desktop only). */
 export default function Magnetic({ children, strength = 0.3, className }: { children: React.ReactNode; strength?: number; className?: string }) {
@@ -9,7 +9,7 @@ export default function Magnetic({ children, strength = 0.3, className }: { chil
   const y = useSpring(useMotionValue(0), { stiffness: 220, damping: 18, mass: 0.4 });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{ x, y }}
       className={className ?? "inline-block"}
@@ -25,6 +25,6 @@ export default function Magnetic({ children, strength = 0.3, className }: { chil
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

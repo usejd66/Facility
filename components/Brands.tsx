@@ -15,7 +15,7 @@ export default function Brands({ title }: { title: string }) {
   return (
     <section aria-label={title} className="border-y border-ink/[0.07] bg-white">
       <div className="mx-auto max-w-[1320px] px-6 py-8 md:py-10">
-        <p className="text-center text-[13px] font-medium text-ink/50 md:text-sm">{title}</p>
+        <p className="text-center text-[13px] font-medium text-ink/65 md:text-sm">{title}</p>
         <Reveal>
           <ul className="mt-5 flex md:mt-7 flex-wrap items-center justify-center lg:grid lg:grid-cols-7">
             {brands.map((brand) => (

@@ -13,9 +13,10 @@ export const messages = {
       ogLocale: "sq_AL",
     },
     nav: {
+      home: "Home",
       about: "Rreth nesh",
+      why: "Pse ne",
       services: "Shërbimet",
-      faq: "Pyetje",
       contact: "Kontakt",
       book: "Rezervo pastrimin",
       menu: "Hap menunë",
@@ -127,9 +128,10 @@ export const messages = {
       ogLocale: "en_US",
     },
     nav: {
+      home: "Home",
       about: "About Us",
+      why: "Why Us",
       services: "Services",
-      faq: "FAQ",
       contact: "Contact",
       book: "Book a Cleaning",
       menu: "Open menu",

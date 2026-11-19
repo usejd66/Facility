@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { Minus, Plus } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { site } from "@/lib/data";
@@ -88,7 +88,7 @@ export default function Faq({ locale }: { locale: Locale }) {
                     </h3>
                     <AnimatePresence initial={false}>
                       {isOpen && (
-                        <motion.div
+                        <m.div
                           id={`faq-a-${i}`}
                           role="region"
                           aria-labelledby={`faq-q-${i}`}
@@ -99,7 +99,7 @@ export default function Faq({ locale }: { locale: Locale }) {
                           className="overflow-hidden"
                         >
                           <p className="max-w-[720px] px-5 pb-5 text-sm md:px-6 leading-relaxed text-ink/65">{answer}</p>
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
                   </div>

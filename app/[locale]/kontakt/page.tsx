@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import MapEmbed from "@/components/MapEmbed";
 import Reveal from "@/components/ui/Reveal";
 import { site } from "@/lib/data";
 import { isLocale, messages, type Locale } from "@/lib/i18n";
@@ -58,12 +59,10 @@ export default async function ContactPage({ params }: PageProps) {
   return (
     <main className="bg-cream px-6 pb-16 pt-28 md:pb-24 md:pt-40">
       <div className="mx-auto max-w-[1180px]">
-        <Reveal>
-          <h1 className="text-[clamp(2.75rem,7vw,5.25rem)] font-bold uppercase leading-none tracking-[-0.03em] text-ink">{t.title}</h1>
-        </Reveal>
+        <h1 className="hero-fade text-[clamp(2.75rem,7vw,5.25rem)] font-bold uppercase leading-none tracking-[-0.03em] text-ink">{t.title}</h1>
 
         <div className="mt-10 grid gap-12 md:mt-14 md:grid-cols-2 md:gap-16">
-          <Reveal delay={0.05}>
+          <div className="hero-fade" style={{ animationDelay: "0.1s" }}>
             <p className="max-w-sm text-sm font-medium leading-relaxed text-ink/80">{t.intro}</p>
 
             <div className="mt-8">
@@ -101,11 +100,11 @@ export default async function ContactPage({ params }: PageProps) {
                 ))}
               </div>
             )}
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.1}>
+          <div className="hero-fade" style={{ animationDelay: "0.2s" }}>
             <ContactForm locale={locale} />
-          </Reveal>
+          </div>
         </div>
 
         <Reveal className="mt-16 md:mt-32">
@@ -113,13 +112,7 @@ export default async function ContactPage({ params }: PageProps) {
         </Reveal>
 
         <Reveal className="relative mt-8 h-[340px] overflow-hidden bg-ink/5 md:h-[440px]">
-          <iframe
-            title={t.mapTitle}
-            src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&z=13&output=embed`}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-full w-full border-0 grayscale"
-          />
+          <MapEmbed title={t.mapTitle} src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&z=13&output=embed`} />
           <a
             href={mapsUrl}
             target="_blank"

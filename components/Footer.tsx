@@ -34,7 +34,7 @@ export default function Footer({ locale }: { locale: Locale }) {
       <div className="relative overflow-hidden rounded-[28px] bg-ink text-cream">
         <div className="mx-auto grid max-w-[1240px] grid-cols-2 gap-x-6 gap-y-10 px-7 pb-6 pt-12 md:px-10 md:pt-14 lg:grid-cols-[1.1fr_0.9fr_0.9fr_1.3fr] lg:gap-8">
           <a href={home} aria-label="Rambo Facility Management" className="col-span-2 self-start lg:col-span-1">
-            <Image src="/rambo-logo.png" alt="Rambo Facility Management" width={1999} height={533} className="h-9 w-auto md:h-10" />
+            <Image src="/rambo-logo.png" alt="Rambo Facility Management" width={1999} height={533} sizes="(min-width: 768px) 150px, 135px" className="h-9 w-auto md:h-10" />
           </a>
 
           <ul className="grid content-start gap-1">
@@ -64,7 +64,7 @@ export default function Footer({ locale }: { locale: Locale }) {
                 </a>
               </li>
             ))}
-            <li className="pt-2 text-xs text-cream/40">
+            <li className="pt-2 text-xs text-cream/60">
               © {new Date().getFullYear()} Rambo Facility Management. {t.footer.rights}
             </li>
           </ul>

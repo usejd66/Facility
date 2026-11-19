@@ -36,7 +36,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
       <button className="mt-5 w-full bg-gold px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:w-1/2">
         {t.submit}
       </button>
-      <p className="mt-3 text-[11px] text-ink/45">{t.note}</p>
+      <p className="mt-3 text-xs text-ink/60">{t.note}</p>
     </form>
   );
 }
