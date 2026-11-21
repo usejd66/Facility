@@ -8,8 +8,8 @@ export default function Footer({ locale }: { locale: Locale }) {
   const home = `/${locale}`;
 
   const pages = [
-    [t.footer.home, home],
-    [t.nav.about, `${home}#about`],
+    [t.nav.home, home],
+    [t.nav.about, `${home}/rreth-nesh`],
     [t.footer.why, `${home}#pse-ne`],
     [t.nav.services, `${home}#sherbimet`],
     [t.nav.contact, `${home}/kontakt`],
@@ -30,12 +30,32 @@ export default function Footer({ locale }: { locale: Locale }) {
   const link = "inline-block py-1.5 text-sm text-cream/85 transition-colors hover:text-gold-light";
 
   return (
-    <footer className="bg-paper p-3 md:p-4">
-      <div className="relative overflow-hidden rounded-[28px] bg-ink text-cream">
+    <footer className="relative overflow-hidden bg-ink text-cream">
+      <div>
         <div className="mx-auto grid max-w-[1240px] grid-cols-2 gap-x-6 gap-y-10 px-7 pb-6 pt-12 md:px-10 md:pt-14 lg:grid-cols-[1.1fr_0.9fr_0.9fr_1.3fr] lg:gap-8">
-          <a href={home} aria-label="Rambo Facility Management" className="col-span-2 self-start lg:col-span-1">
-            <Image src="/rambo-logo.png" alt="Rambo Facility Management" width={1999} height={533} sizes="(min-width: 768px) 150px, 135px" className="h-9 w-auto md:h-10" />
-          </a>
+          <div className="col-span-2 self-start lg:col-span-1">
+            <a href={home} aria-label="Rambo Facility Management" className="inline-block">
+              <Image src="/rambo-logo.png" alt="Rambo Facility Management" width={1999} height={533} sizes="(min-width: 768px) 150px, 135px" className="h-9 w-auto md:h-10" />
+            </a>
+            {site.social.instagram && (
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-cream/15 py-2 pl-2 pr-4 text-sm font-medium text-cream/85 transition-colors hover:border-gold hover:text-gold-light"
+              >
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold text-ink">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </span>
+                @cleaning_solution_by_rambo
+              </a>
+            )}
+          </div>
 
           <ul className="grid content-start gap-1">
             {pages.map(([label, href]) => (

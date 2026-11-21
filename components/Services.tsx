@@ -35,12 +35,12 @@ export default function Services({ locale }: { locale: Locale }) {
         </Reveal>
 
         <Reveal delay={0.1}>
-        <div className="-mx-6 mt-8 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+        <div className="-mx-6 mt-8 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:mt-12 sm:grid sm:auto-rows-fr sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
           {t.items.map((item) => {
             const photo = photos[item.image];
             return (
-              <div key={item.title} className="h-full w-[80%] shrink-0 snap-start sm:w-auto">
-                <article className="group flex h-full flex-col rounded-2xl bg-white p-2.5 shadow-[0_10px_30px_rgba(8,19,31,0.06)] transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(8,19,31,0.12)]">
+              <div key={item.title} className="flex w-[80%] shrink-0 snap-start sm:w-auto">
+                <article className="group flex w-full flex-col rounded-2xl bg-white p-2.5 shadow-[0_10px_30px_rgba(8,19,31,0.06)] transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(8,19,31,0.12)]">
                   <div className="relative">
                     <div className="relative aspect-[16/10.5] overflow-hidden rounded-xl">
                       <Image

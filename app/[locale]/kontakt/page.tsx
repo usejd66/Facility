@@ -75,7 +75,7 @@ export default async function ContactPage({ params }: PageProps) {
 
             <div className="mt-8 grid gap-4">
               <a href={`tel:+${site.phone}`} className={lineLink}>
-                +{site.phone}
+                {site.phoneIntl}
                 <ArrowRight size={20} className="text-gold transition-transform group-hover:translate-x-1" aria-hidden />
               </a>
               <a href={`mailto:${site.email}`} className={lineLink}>

@@ -32,7 +32,8 @@ const jsonLd = {
   url: site.url,
   telephone: `+${site.phone}`,
   email: site.email,
-  areaServed: site.city,
+  sameAs: Object.values(site.social).filter(Boolean),
+  areaServed: ["Tiranë", "Durrës", "Golem", "Shkodër", "Vlorë", "Sarandë"].map((name) => ({ "@type": "City", name })),
   address: { "@type": "PostalAddress", addressLocality: site.city, addressCountry: "AL" },
   openingHours: "Mo-Su 08:00-20:00",
 };

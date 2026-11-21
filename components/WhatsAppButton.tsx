@@ -35,7 +35,7 @@ export default function WhatsAppButton({ locale }: { locale: Locale }) {
             href={`tel:+${site.phone}`}
             aria-label={`${t.nav.phone} ${site.phoneDisplay}`}
             whileTap={{ scale: 0.92 }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-ink shadow-lg shadow-ink/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink lg:hidden"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-ink shadow-lg shadow-ink/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink xl:hidden"
           >
             <Phone size={20} strokeWidth={2.2} aria-hidden />
           </m.a>

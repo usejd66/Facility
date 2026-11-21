@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
 import WhyUs from "@/components/WhyUs";
 import Services from "@/components/Services";
 import Faq from "@/components/Faq";
+import FinalCta from "@/components/FinalCta";
+import CoverageMap from "@/components/CoverageMap";
 import Reveal from "@/components/ui/Reveal";
-import SectionHeading from "@/components/ui/SectionHeading";
-import Marquee from "@/components/ui/Marquee";
 import ScrollText from "@/components/ui/ScrollText";
 import Counter from "@/components/ui/Counter";
-import { site } from "@/lib/data";
 import { isLocale, messages, type Locale } from "@/lib/i18n";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -69,7 +68,7 @@ export default async function Home({ params }: PageProps) {
               className="mt-6 text-[clamp(1.55rem,4.4vw,3.9rem)] md:mt-8 font-semibold leading-[1.12] tracking-[-0.03em]"
             />
             <Reveal delay={0.1} className="mt-8 md:mt-12">
-              <a href="#sherbimet" className="group inline-flex items-center gap-4 rounded-full border border-ink/15 py-1.5 pl-6 pr-1.5 font-medium transition hover:border-gold">
+              <a href={`/${locale}/rreth-nesh`} className="group inline-flex items-center gap-4 rounded-full border border-ink/15 py-1.5 pl-6 pr-1.5 font-medium transition hover:border-gold">
                 {t.about.link}
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-gold-light transition-transform duration-500 group-hover:rotate-45">
                   <ArrowUpRight size={18} />
@@ -96,32 +95,11 @@ export default async function Home({ params }: PageProps) {
 
         <Services locale={locale} />
 
-        {/* Areas */}
-        <section id="zonat" className="scroll-mt-20 overflow-hidden bg-paper py-16 md:py-36">
-          <div className="mx-auto max-w-[1320px] px-6">
-            <SectionHeading eyebrow={t.areas.eyebrow} title={t.areas.title} description={t.areas.note} />
-          </div>
-          <div className="mt-8 grid gap-2 md:mt-14 md:gap-4">
-            <Marquee
-              items={t.areas.names}
-              duration={50}
-              separator="•"
-              itemClassName="text-[clamp(2.5rem,6vw,5.5rem)] font-semibold tracking-[-0.04em] text-ink"
-            />
-            <Marquee
-              items={[...t.areas.names].reverse()}
-              duration={55}
-              reverse
-              separator="•"
-              itemClassName="text-[clamp(2.5rem,6vw,5.5rem)] font-semibold tracking-[-0.04em] text-transparent [-webkit-text-stroke:1.5px_var(--color-gold)]"
-            />
-          </div>
-          <div className="mx-auto mt-6 flex max-w-[1320px] items-center gap-2 px-6 text-sm text-ink/50 md:mt-10">
-            <MapPin size={16} className="text-gold" /> {site.city}
-          </div>
-        </section>
+        <CoverageMap locale={locale} />
 
         <Faq locale={locale} />
+
+        <FinalCta locale={locale} />
 
       </main>
 
