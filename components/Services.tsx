@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import InView from "@/components/ui/InView";
+import RiseWords, { wordCount } from "@/components/ui/RiseWords";
 import { BroomSparkIcon } from "@/components/WhyIllustrations";
 import { messages, type Locale } from "@/lib/i18n";
 import { external, whatsappQuoteUrl } from "@/lib/whatsapp";
@@ -28,21 +30,24 @@ export default function Services({ locale }: { locale: Locale }) {
             <BroomSparkIcon className="h-5 w-5 text-gold" />
             {t.eyebrow}
           </p>
-          <h2 className="mt-5 text-[clamp(2.2rem,4.4vw,3.6rem)] font-bold leading-[1.04] tracking-[-0.03em] text-ink">
-            {a} <span className="text-gold">{b}</span>
-            <br className="hidden sm:block" /> <span className="text-gold">{c}</span> {d}
-          </h2>
+          <InView as="h2" className="mt-5 text-[clamp(2.2rem,4.4vw,3.6rem)] font-bold leading-[1.04] tracking-[-0.03em] text-ink">
+            <RiseWords text={a} />{" "}
+            <RiseWords text={b} start={wordCount(a)} className="text-gold" />
+            <br className="hidden sm:block" />
+            <RiseWords text={c} start={wordCount(a) + wordCount(b)} className="text-gold" />{" "}
+            <RiseWords text={d} start={wordCount(a) + wordCount(b) + wordCount(c)} />
+          </InView>
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <InView margin="0px 0px -8% 0px">
         <div className="-mx-6 mt-8 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:mt-12 sm:grid sm:auto-rows-fr sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
-          {t.items.map((item) => {
+          {t.items.map((item, i) => {
             const photo = photos[item.image];
             return (
               <div key={item.title} className="flex w-[80%] shrink-0 snap-start sm:w-auto">
                 <article className="group flex w-full flex-col rounded-2xl bg-white p-2.5 shadow-[0_10px_30px_rgba(8,19,31,0.06)] transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(8,19,31,0.12)]">
                   <div className="relative">
-                    <div className="relative aspect-[16/10.5] overflow-hidden rounded-xl">
+                    <div className="img-reveal relative aspect-[16/10.5] overflow-hidden rounded-xl" style={{ animationDelay: `${0.1 + i * 0.12}s` }}>
                       <Image
                         src={photo.src}
                         alt={photo.alt[locale]}
@@ -69,7 +74,7 @@ export default function Services({ locale }: { locale: Locale }) {
             );
           })}
         </div>
-        </Reveal>
+        </InView>
       </div>
     </section>
   );

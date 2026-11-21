@@ -31,7 +31,13 @@ export default function ContactForm({ locale }: { locale: Locale }) {
       </div>
       <label className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-ink/70">
         <input type="checkbox" required className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[var(--color-gold)]" />
-        {t.consent}
+        <span>
+          {t.consent}{" "}
+          <a href={`/${locale}/privatesia`} target="_blank" className="font-medium text-ink underline decoration-gold underline-offset-2">
+            {t.consentLink}
+          </a>
+          .
+        </span>
       </label>
       <button className="mt-5 w-full bg-gold px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:w-1/2">
         {t.submit}

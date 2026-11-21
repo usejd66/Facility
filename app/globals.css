@@ -31,6 +31,43 @@ body { background: var(--color-paper); color: var(--color-ink); }
 .hero-fade { animation: hero-fade 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @media (prefers-reduced-motion: reduce) { .hero-rise, .hero-fade { animation: none; } }
 
+/* ── Scroll-triggered animations (wrapper gets data-inview="true" from <InView>) ── */
+
+/* 1. Headings: words rise out of a mask */
+.rise-mask { display: inline-block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; vertical-align: bottom; }
+.rise-word { display: inline-block; transform: translateY(110%); }
+[data-inview="true"] .rise-word { animation: hero-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* 2. Map: outline draws itself, then fills; cities pop in one by one */
+.map-outline { stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; }
+[data-inview="true"] .map-outline { animation: map-draw 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards, map-fill 0.9s 1.3s ease forwards; }
+.map-dot { opacity: 0; transform: scale(0.2); transform-box: fill-box; transform-origin: center; }
+[data-inview="true"] .map-dot { animation: dot-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.map-label { opacity: 0; }
+[data-inview="true"] .map-label { animation: hero-fade 0.6s ease forwards; }
+@keyframes map-draw { to { stroke-dashoffset: 0; } }
+@keyframes map-fill { to { fill-opacity: 1; } }
+@keyframes dot-pop { to { opacity: 1; transform: scale(1); } }
+
+/* 3. Photos: curtain wipe from bottom to top */
+.img-reveal { clip-path: inset(100% 0 0 0); }
+[data-inview="true"] .img-reveal { animation: curtain 1.15s cubic-bezier(0.77, 0, 0.18, 1) forwards; }
+@keyframes curtain { to { clip-path: inset(0 0 0 0); } }
+
+/* 4. Smooth cross-page transitions (Chrome/Edge/Safari; others just navigate normally) */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vt-out 0.3s cubic-bezier(0.4, 0, 1, 1) both; }
+::view-transition-new(root) { animation: vt-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+header { view-transition-name: site-header; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-12px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(18px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-word, .map-dot, .map-label, .img-reveal { transform: none !important; opacity: 1 !important; clip-path: none !important; animation: none !important; }
+  .map-outline { stroke-dashoffset: 0 !important; fill-opacity: 1 !important; animation: none !important; }
+  @view-transition { navigation: none; }
+}
+
 /* Hide the floating call/WhatsApp buttons while the mobile menu is open */
 html[data-menu-open] .floating-contact { display: none; }
 

@@ -4,6 +4,8 @@ import clsx from "clsx";
 import { AnimatePresence, m } from "motion/react";
 import { Minus, Plus } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import InView from "@/components/ui/InView";
+import RiseWords, { wordCount } from "@/components/ui/RiseWords";
 import { messages, type Locale } from "@/lib/i18n";
 
 export default function Faq({ locale }: { locale: Locale }) {
@@ -14,7 +16,9 @@ export default function Faq({ locale }: { locale: Locale }) {
     <section id="faq" className="scroll-mt-20 bg-white px-6 py-16 md:py-24">
       <div className="mx-auto max-w-[1120px]">
         <Reveal className="text-center">
-          <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-semibold tracking-[-0.03em] text-navy">{t.title}</h2>
+          <InView as="h2" className="text-[clamp(1.8rem,3vw,2.6rem)] font-semibold tracking-[-0.03em] text-navy">
+            <RiseWords text={t.title} />
+          </InView>
           <p className="mx-auto mt-3 max-w-[460px] text-sm leading-relaxed text-ink/60">
             {t.description.split("\n").map((line, i) => (
               <span key={i}>

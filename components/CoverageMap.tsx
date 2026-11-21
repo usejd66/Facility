@@ -1,5 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import InView from "@/components/ui/InView";
+import RiseWords, { wordCount } from "@/components/ui/RiseWords";
 import { BroomSparkIcon } from "@/components/WhyIllustrations";
 import { albaniaCities, albaniaMap } from "@/lib/albaniaMap";
 import { messages, type Locale } from "@/lib/i18n";
@@ -20,9 +22,10 @@ export default function CoverageMap({ locale }: { locale: Locale }) {
             <BroomSparkIcon className="h-5 w-5 text-gold" />
             {t.eyebrow}
           </p>
-          <h2 className="mt-5 text-[clamp(2.2rem,4.4vw,3.8rem)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
-            {t.statement[0]} <span className="text-gold">{t.statement[1]}</span>
-          </h2>
+          <InView as="h2" className="mt-5 text-[clamp(2.2rem,4.4vw,3.8rem)] font-bold leading-[1.04] tracking-[-0.035em] text-ink">
+            <RiseWords text={t.statement[0]} />{" "}
+            <RiseWords text={t.statement[1]} start={wordCount(t.statement[0])} className="text-gold" />
+          </InView>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/65">{t.description}</p>
 
           <dl className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-ink/10 pt-7">
@@ -44,27 +47,31 @@ export default function CoverageMap({ locale }: { locale: Locale }) {
         </Reveal>
 
         {/* map */}
-        <Reveal delay={0.1} className="relative mx-auto w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[520px]">
+        <InView className="relative mx-auto w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[520px]" margin="0px 0px -20% 0px">
           <div aria-hidden className="absolute inset-[8%] rounded-full bg-[radial-gradient(circle,rgba(228,199,133,0.35),transparent_70%)]" />
           <svg viewBox={`0 0 ${albaniaMap.width} ${albaniaMap.height}`} className="relative h-auto w-full" role="img" aria-label={`${t.title}: ${t.names.join(", ")}`}>
-            <path d={albaniaMap.path} fill="#ffffff" stroke="#08131f" strokeOpacity="0.18" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d={albaniaMap.path} pathLength={1} className="map-outline" fill="#ffffff" stroke="#08131f" strokeOpacity="0.28" strokeWidth="1.6" strokeLinejoin="round" />
             {cities.map((c, i) => {
               const hq = "hq" in c && c.hq;
               const left = c.label.startsWith("left");
               const dy = c.label === "left-below" ? 16 : 0;
+              // the outline draws first (~1.3s), then the cities light up one after another
+              const delay = `${1.2 + i * 0.16}s`;
               return (
-                <g key={c.key} className="hero-fade" style={{ animationDelay: `${0.2 + i * 0.12}s` }}>
+                <g key={c.key}>
+                  <g className="map-dot" style={{ animationDelay: delay }}>
                   {hq && (
                     <circle cx={c.x} cy={c.y} r="9" fill="#c4973b" opacity="0.45" className="animate-ping-slow [transform-box:fill-box] [transform-origin:center]" />
                   )}
                   <circle cx={c.x} cy={c.y} r={hq ? 9 : 6.5} fill={hq ? "#08131f" : "#c4973b"} stroke="#ffffff" strokeWidth="2.5" />
                   {hq && <circle cx={c.x} cy={c.y} r="3.2" fill="#e4c785" />}
+                  </g>
                   <text
                     x={left ? c.x - 14 : c.x + 16}
                     y={c.y + 5 + dy}
                     textAnchor={left ? "end" : "start"}
-                    className="fill-ink"
-                    style={{ fontSize: hq ? 19 : 16, fontWeight: hq ? 700 : 600 }}
+                    className="map-label fill-ink"
+                    style={{ fontSize: hq ? 19 : 16, fontWeight: hq ? 700 : 600, animationDelay: delay }}
                   >
                     {c.name}
                   </text>
@@ -72,7 +79,7 @@ export default function CoverageMap({ locale }: { locale: Locale }) {
               );
             })}
           </svg>
-        </Reveal>
+        </InView>
       </div>
     </section>
   );

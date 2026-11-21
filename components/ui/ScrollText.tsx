@@ -14,7 +14,7 @@ function Word({ children, progress, range }: { children: string; progress: Motio
 /** Words light up one by one as the paragraph scrolls through the viewport. */
 export default function ScrollText({ text, muted, className }: { text: string; muted?: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.45"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.95", "end 0.8"] });
   const main = text.split(" ");
   const rest = muted ? muted.split(" ") : [];
   const total = main.length + rest.length;

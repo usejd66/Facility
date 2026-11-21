@@ -85,7 +85,10 @@ export default function Footer({ locale }: { locale: Locale }) {
               </li>
             ))}
             <li className="pt-2 text-xs text-cream/60">
-              © {new Date().getFullYear()} Rambo Facility Management. {t.footer.rights}
+              © {new Date().getFullYear()} Rambo Facility Management. {t.footer.rights}{" "}
+              <a href={`${home}/privatesia`} className="underline decoration-cream/30 underline-offset-2 transition-colors hover:text-gold-light">
+                {t.footer.privacy}
+              </a>
             </li>
           </ul>
         </div>

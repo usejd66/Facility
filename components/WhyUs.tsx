@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
+import InView from "@/components/ui/InView";
+import RiseWords, { wordCount } from "@/components/ui/RiseWords";
 import { BroomSparkIcon, CleanerLineArt, HouseCleanIcon, OfficeCleanIcon, Sparkles, StoreCleanIcon } from "@/components/WhyIllustrations";
 import { messages, type Locale } from "@/lib/i18n";
 
@@ -22,10 +24,13 @@ export default function WhyUs({ locale }: { locale: Locale }) {
             <BroomSparkIcon className="h-5 w-5 text-gold" />
             {t.eyebrow}
           </p>
-          <h2 className="mt-6 text-[clamp(2.5rem,5.4vw,4.6rem)] font-bold leading-[1.02] tracking-[-0.035em] text-ink">
-            {a} <span className="text-gold">{b}</span>
-            <br className="hidden sm:block" /> <span className="text-gold">{c}</span> {d}
-          </h2>
+          <InView as="h2" className="mt-6 text-[clamp(2.5rem,5.4vw,4.6rem)] font-bold leading-[1.02] tracking-[-0.035em] text-ink">
+            <RiseWords text={a} />{" "}
+            <RiseWords text={b} start={wordCount(a)} className="text-gold" />
+            <br className="hidden sm:block" />
+            <RiseWords text={c} start={wordCount(a) + wordCount(b)} className="text-gold" />{" "}
+            <RiseWords text={d} start={wordCount(a) + wordCount(b) + wordCount(c)} />
+          </InView>
           <p className="mx-auto mt-5 max-w-[620px] leading-relaxed text-ink/60 md:mt-7">{t.description}</p>
         </Reveal>
 
@@ -49,14 +54,14 @@ export default function WhyUs({ locale }: { locale: Locale }) {
             })}
           </ul>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Reveal className="relative aspect-[19/20] overflow-hidden rounded-3xl">
+          <InView className="grid grid-cols-2 gap-4">
+            <div className="img-reveal relative aspect-[19/20] overflow-hidden rounded-3xl">
               <Image src="/why-supplies.jpg" alt={t.imageAlts[0]} fill sizes="(min-width: 1024px) 340px, 50vw" className="object-cover object-[40%_50%]" />
-            </Reveal>
-            <Reveal delay={0.1} className="relative aspect-[19/20] overflow-hidden rounded-3xl">
+            </div>
+            <div className="img-reveal relative aspect-[19/20] overflow-hidden rounded-3xl" style={{ animationDelay: "0.18s" }}>
               <Image src="/why-team.jpg" alt={t.imageAlts[1]} fill sizes="(min-width: 1024px) 340px, 50vw" className="object-cover object-[50%_62%]" />
-            </Reveal>
-          </div>
+            </div>
+          </InView>
         </div>
       </div>
     </section>

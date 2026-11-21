@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ArrowUpRight, Check, Phone } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import InView from "@/components/ui/InView";
+import RiseWords, { wordCount } from "@/components/ui/RiseWords";
 import Magnetic from "@/components/ui/Magnetic";
 import { site } from "@/lib/data";
 import { messages, type Locale } from "@/lib/i18n";
@@ -18,9 +20,9 @@ export default function FinalCta({ locale }: { locale: Locale }) {
       {/* gold half */}
       <div className="relative bg-gold px-6 py-16 text-ink sm:px-10 md:py-24 lg:pl-[max(1.5rem,calc((100vw-1180px)/2))] lg:pr-14">
         <Reveal>
-          <h2 className="max-w-[13ch] text-[clamp(2.6rem,6vw,5.6rem)] font-bold leading-[0.98] tracking-[-0.045em]">
-            {t.title[0]} {t.title[1]}
-          </h2>
+          <InView as="h2" className="max-w-[13ch] text-[clamp(2.6rem,6vw,5.6rem)] font-bold leading-[0.98] tracking-[-0.045em]">
+            <RiseWords text={`${t.title[0]} ${t.title[1]}`} />
+          </InView>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/75">{t.text}</p>
         </Reveal>
 
